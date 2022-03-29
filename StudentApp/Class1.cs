@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace StudentApp
 {
     internal class timeconvert
-    {
+    {    delete this class
     //    //public  string ConvertTime(int timeleft1)
     //    {
     //      //  TimeSpan ts = TimeSpan.FromSeconds(timeleft1);
