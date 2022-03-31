@@ -178,7 +178,7 @@ namespace StudentApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (objAssessmentData.sections[SectionList].items.Count - 1 > ItemList)
+            if (objAssessmentData.sections[SectionList].items.Count - 1 >= ItemList)
             {
               //  timeleft = timeleft - timeleft2;
                // timeleft2 = (objAssessmentData.sections[SectionList].duration) / objAssessmentData.sections[SectionList].items.Count;
