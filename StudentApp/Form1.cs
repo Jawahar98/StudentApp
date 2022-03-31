@@ -185,6 +185,26 @@ namespace StudentApp
 
                 sectiontimer.Start();
                 itemtimer.Start();
+                
+                 if (ItemList == objAssessmentData.sections[SectionList].items.Count - 1)
+                {
+                    SectionList = SectionList + 1;
+                    ItemList = 0;
+                    flowLayoutPanel2.Controls.Clear();
+                    for (int j = 11; j <= (objAssessmentData.sections[SectionList].items.Count * objAssessmentData.sections.Count); j++)
+                    {
+                        UserControl1 us = new UserControl1(j);
+
+                        us.iscurrentQsnBookmark = false;
+
+                        flowLayoutPanel2.Controls.Add(us);
+                    }
+                }
+                else { ItemList = ItemList + 1; }
+
+                lblquestion.Text = objAssessmentData.sections[SectionList].items[ItemList].stem.question.text;
+
+                lblqnum.Text = (++qn) + ".";
 
                 int tmtn = numberofseconds - timeleft;
                 objAssessmentData.sections[SectionList].items[ItemList].timeTaken = tmtn;
@@ -199,7 +219,7 @@ namespace StudentApp
               //  flowLayoutPanel2.Controls.Clear();
                 flowLayoutPanel3.Controls.Clear();
                 flowLayoutPanel4.Controls.Clear();
-               ItemList = ItemList + 1;
+              // ItemList = ItemList + 1;
 
 
                 if (objAssessmentData.settings.answeringSequenceOfSection == "FREE_SEQUENCE")
@@ -229,7 +249,9 @@ namespace StudentApp
                 }
                 else
                 {
-                    
+                    sectiontimer.Enabled = false;
+                    timerlabel.Visible = false;
+                    label3.Visible = false;
                     itemtimer.Enabled = true;
                     timeleft = timeleft - timeleft2;
                     timeleft2 = (objAssessmentData.sections[SectionList].duration) / objAssessmentData.sections[SectionList].items.Count;
@@ -240,11 +262,6 @@ namespace StudentApp
                    
 
                 }
-
-
-                lblquestion.Text = objAssessmentData.sections[SectionList].items[ItemList].stem.question.text;
-
-                lblqnum.Text = (++qn) + ".";
 
                 if (Items.Contains(objAssessmentData.sections[SectionList].items[ItemList]._id))
                 {
@@ -370,13 +387,12 @@ namespace StudentApp
                 }
                 else
                 {
-                  
-
+                  sectiontimer.Enabled = false;
+                    timerlabel.Visible = false;
+                    label3.Visible = false;
                     itemtimer.Enabled = true;
                     timeleft = timeleft - timeleft2;
                     timeleft2 = objAssessmentData.sections[SectionList].duration / objAssessmentData.sections[SectionList].items.Count;
-
-                   
                     itemtimerlabel.Visible = true;
                     button2.Hide();
                     checkBox1.Visible = false;
